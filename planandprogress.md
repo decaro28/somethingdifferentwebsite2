@@ -67,6 +67,7 @@ Single-page static website for "Something Different," a 40+ year family-owned It
 - [x] Hero brightness pass matched to the older `/somethingdifferentwebsite` approach: reduced the full-surface dark wash, moved the stronger shading into targeted left/bottom edge fades, and raised the video treatment to `brightness(1.32) saturate(1.14) contrast(1.06)` so the flowers read closer to the earlier, more luminous hero without changing blur behavior
 - [x] Removed the earlier direct video brightening attempts after review: kept the newer overlay rebalance inspired by `/somethingdifferentwebsite`, but dropped the `.hero-video` filter boost so the hero brightness comes from the edge-fade composition instead of an artificial global lift
 - [x] Removed the desktop hero scroll indicator after review: the thin vertical line at the lower-right of the hero was the `.hero-scroll-hint`, not a video seam, so the hint markup and its CSS were deleted to keep the hero media edge clean
+- [x] Hardened hero video scroll recovery after a disappearing-video bug: the controller now tracks the full `#hero` section instead of the `<video>` element, explicitly resumes playback/visibility when the hero re-enters view or the page becomes active again, and clears pending loop timers so offscreen scrolls cannot leave the flower video stuck hidden
 
 
 
@@ -77,3 +78,12 @@ Single-page static website for "Something Different," a 40+ year family-owned It
 - [x] Refined the mobile hero shadow treatment again so the darkness follows each element individually: removed the single shared glow behind `.hero-content` and attached blurred radial shadow fields to the tag, title, subcopy, and CTA instead, keeping the effect local to each piece of hero copy
 - [x] Restored a brighter, more natural hero flower after review: brought back a restrained `.hero-video` filter (`brightness(1.14) saturate(1.04) contrast(1.02)`) and reduced the broad overlay wash so the bloom reads more luminous without looking artificially edited
 - [x] Copy exploration pass for replacing `"Step inside"`: generated short subheadline options aimed at a transportive, hushed, dreamlike sense of arrival without using explicit fantasy or religious wording
+- [x] Investigated hero flower video disappearing after scrolling away and back: traced the failure to the custom video visibility/loop controller and implemented a more reliable resume path
+- [x] Investigated Vercel deploy failure: inspected current project linking, recent deployment/build logs, and GitHub integration state before deciding how to reassign the repo
+- [x] Identified duplicate Vercel project wiring: `somethingdifferentwebsite2` is the correct static-site project and deploys successfully, while legacy project `something-different` is still auto-deploying the same repo under a mismatched `Next.js` preset and producing the reported error
+- [x] Investigation completed: confirmed the repo was linked to two Vercel projects at once and isolated the broken one to `something-different` running with a mismatched `Next.js` preset
+- [x] User changed deployment target: keep Vercel project `something-different` as the long-term auto-deploy target for GitHub repo `somethingdifferentwebsite2` instead of the newer `somethingdifferentwebsite2` Vercel project
+- [x] Reconfigured Vercel project `something-different` from `Next.js` to static `Other` by clearing its framework preset through the Vercel API while preserving the GitHub auto-deploy link to `decaro28/somethingdifferentwebsite2`
+- [x] Verified `something-different` can deploy successfully after the config change: triggered a production redeploy, confirmed status `Ready`, and confirmed `www.somethingdifferent.ca` returns HTTP 200 from Vercel
+- [x] Removed duplicate Vercel project `somethingdifferentwebsite2`, leaving `something-different` as the single Vercel auto-deploy target for GitHub repo `somethingdifferentwebsite2`
+- [x] Verified Git auto-deploy remains enabled on `something-different`: project link points to GitHub repo `decaro28/somethingdifferentwebsite2`, production branch is `main`, and Vercel reports `gitProviderOptions.createDeployments = enabled`

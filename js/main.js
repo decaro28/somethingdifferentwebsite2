@@ -108,9 +108,10 @@
   }
 
   // --- Hero Video: controlled start, fade, and loop ---
+  var heroSection = document.getElementById('hero');
   var heroVideo = document.querySelector('.hero-video');
 
-  if (heroVideo) {
+  if (heroSection && heroVideo) {
     var INITIAL_START_TIME = 6;
     var LOOP_START_TIME = 1.5;
     var LOOP_RESTART_DELAY = 420;
@@ -122,6 +123,7 @@
     var isLoopRestarting = false;
     var initialRevealTimer = null;
     var settleVideoTimer = null;
+    var restartLoopTimer = null;
 
     function playHeroVideo() {
       var playPromise = heroVideo.play();
@@ -152,6 +154,13 @@
       }
     }
 
+    function clearRestartLoopTimer() {
+      if (restartLoopTimer) {
+        window.clearTimeout(restartLoopTimer);
+        restartLoopTimer = null;
+      }
+    }
+
     function settleHeroVideo() {
       clearSettleVideoTimer();
       settleVideoTimer = window.setTimeout(function () {
@@ -176,6 +185,20 @@
         hasShownInitialReveal = true;
         settleHeroVideo();
       }, INITIAL_REVEAL_DELAY);
+    }
+
+    function resumeHeroVideo() {
+      if (heroVideo.ended || heroVideo.currentTime >= Math.max((heroVideo.duration || 0) - 0.12, 0)) {
+        heroVideo.currentTime = Math.min(LOOP_START_TIME, heroVideo.duration || LOOP_START_TIME);
+      }
+
+      playHeroVideo();
+
+      if (hasShownInitialReveal) {
+        showHeroVideo();
+      } else {
+        queueInitialReveal();
+      }
     }
 
     heroVideo.addEventListener('loadedmetadata', function () {
@@ -208,9 +231,11 @@
 
       isLoopRestarting = true;
       clearInitialRevealTimer();
+      clearRestartLoopTimer();
       hideHeroVideo();
 
-      window.setTimeout(function () {
+      restartLoopTimer = window.setTimeout(function () {
+        restartLoopTimer = null;
         heroVideo.currentTime = Math.min(LOOP_START_TIME, heroVideo.duration || LOOP_START_TIME);
 
         if (isVideoInView) {
@@ -231,11 +256,7 @@
 
             if (isVideoInView) {
               if (!isLoopRestarting) {
-                playHeroVideo();
-
-                if (hasShownInitialReveal) {
-                  showHeroVideo();
-                }
+                resumeHeroVideo();
               }
             } else {
               clearInitialRevealTimer();
@@ -245,11 +266,29 @@
         },
         { threshold: 0.1 }
       );
-      videoObserver.observe(heroVideo);
+      videoObserver.observe(heroSection);
     } else {
-      playHeroVideo();
-      queueInitialReveal();
+      resumeHeroVideo();
     }
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && isVideoInView && !isLoopRestarting) {
+        resumeHeroVideo();
+      }
+    });
+
+    window.addEventListener('pageshow', function () {
+      if (isVideoInView && !isLoopRestarting) {
+        resumeHeroVideo();
+      }
+    });
+
+    window.addEventListener('beforeunload', function () {
+      clearInitialRevealTimer();
+      clearSettleVideoTimer();
+      clearRestartLoopTimer();
+      heroVideo.pause();
+    });
   }
 
 })();
