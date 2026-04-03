@@ -302,7 +302,7 @@ button {
 
 .hero-video-wrap {
   position: absolute;
-  inset: 0;
+  inset: 0 0 40px 0;
   z-index: 0;
 }
 
@@ -933,8 +933,30 @@ button {
   }
 
   .hero {
-    padding: 0 4rem 6rem;
-    align-items: flex-end;
+    padding: 6rem 4rem;
+    align-items: center;
+  }
+
+  .hero-video-wrap {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+  }
+
+  .hero-video-overlay {
+    background: linear-gradient(
+      to right,
+      rgba(26, 22, 20, 1) 0%,
+      rgba(26, 22, 20, 0.7) 25%,
+      rgba(26, 22, 20, 0.15) 70%,
+      rgba(26, 22, 20, 0) 100%
+    );
+  }
+
+  .hero-content {
+    max-width: 48%;
+    margin: 0;
   }
 
   .hero-sub {
@@ -987,6 +1009,30 @@ button {
     height: 360px;
   }
 
+  .shop-grid-item:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .shop-grid-item:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .shop-grid-item:nth-child(3) {
+    display: none;
+  }
+
+  .shop-grid-item:nth-child(4) {
+    grid-column: 2 / 4;
+    grid-row: 2;
+  }
+
+  .shop-grid-item:nth-child(5) {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
   /* Seasons */
   .seasons {
     padding: 10rem 4rem;
@@ -1023,7 +1069,7 @@ button {
 
 @media (min-width: 1280px) {
   .hero {
-    padding: 0 6rem 7rem;
+    padding: 7rem 6rem;
   }
 
   .story {

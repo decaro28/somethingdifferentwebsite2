@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/pink_flower-poster.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/pink_flower.mp4" as="video" type="video/mp4">
+  <link rel="icon" href="icon.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -51,6 +54,7 @@
         muted
         loop
         playsinline
+        preload="auto"
         poster="assets/pink_flower-poster.jpg"
       >
         <source src="assets/pink_flower.mp4" type="video/mp4">
@@ -109,11 +113,11 @@
       <div class="shop-grid-item reveal reveal-delay-2">
         <img src="assets/shop_blue.jpg" alt="A blue and white display with painted herons, hydrangeas, and patterned ceramic vases" loading="lazy" width="800" height="600">
       </div>
-      <div class="shop-grid-item reveal">
-        <img src="assets/shop_lightblue.jpg" alt="Shelves with turquoise vases, vintage finds, and pampas grass in soft natural light" loading="lazy" width="800" height="1067">
-      </div>
       <div class="shop-grid-item shop-grid-wide reveal reveal-delay-1">
         <img src="assets/shop_woodpink.jpg" alt="A rustic wooden display with pale tulips, cherry blossoms, and zinc buckets" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="shop-grid-item shop-grid-hide-desktop reveal">
+        <img src="assets/shop_lightblue.jpg" alt="Shelves with turquoise vases, vintage finds, and pampas grass in soft natural light" loading="lazy" width="800" height="1067">
       </div>
     </div>
   </section>
@@ -123,29 +127,29 @@
     <div class="seasons-header reveal">
       <p class="section-tag">Every Season</p>
       <h2 class="section-title">There's always a<br>reason to celebrate.</h2>
-      <p class="seasons-desc">From Christmas trees dressed in gold to Valentine's bouquets wrapped in ribbon &mdash; we bring the magic of each season right to your doorstep.</p>
+      <p class="seasons-desc">From Christmas trees to Valentine's gifts; we bring the magic of each season and holidy to your doorstep.</p>
     </div>
     <div class="seasons-grid">
       <div class="season-card reveal">
+        <div class="season-card-image">
+          <img src="assets/christmas.png" alt="A lavishly decorated Christmas tree with gold poinsettias, red mesh ribbon, and twinkling lights" loading="lazy" width="600" height="900">
+        </div>
+        <h3 class="season-card-title">Christmas</h3>
+        <p class="season-card-text">Trees, wreaths, ornaments, and everything to make your home glow. We go all out &mdash; and so should you.</p>
+      </div>
+      <div class="season-card reveal reveal-delay-1">
         <div class="season-card-image">
           <img src="assets/valentines.png" alt="A Valentine's Day arrangement with red and pink roses, heart picks, and gingham ribbon in a red enamel pot" loading="lazy" width="600" height="800">
         </div>
         <h3 class="season-card-title">Valentine's Day</h3>
         <p class="season-card-text">Handcrafted arrangements that say what words can't. Roses, ribbon, and a whole lot of heart.</p>
       </div>
-      <div class="season-card reveal reveal-delay-1">
+      <div class="season-card reveal reveal-delay-2">
         <div class="season-card-image">
           <img src="assets/mothersday.jpg" alt="A soft pink Mother's Day bouquet with gerbera daisies, roses, and baby's breath wrapped in white paper" loading="lazy" width="600" height="800">
         </div>
         <h3 class="season-card-title">Mother's Day</h3>
         <p class="season-card-text">For the woman who made your house a home. Fresh bouquets, gifts, and all the little things she loves.</p>
-      </div>
-      <div class="season-card reveal reveal-delay-2">
-        <div class="season-card-image">
-          <img src="assets/christmas.png" alt="A lavishly decorated Christmas tree with gold poinsettias, red mesh ribbon, and twinkling lights" loading="lazy" width="600" height="900">
-        </div>
-        <h3 class="season-card-title">Christmas</h3>
-        <p class="season-card-text">Trees, wreaths, ornaments, and everything to make your home glow. We go all out &mdash; and so should you.</p>
       </div>
     </div>
   </section>
@@ -155,7 +159,7 @@
     <div class="visit-inner">
       <div class="visit-text reveal">
         <p class="section-tag">Come Say Hello</p>
-        <h2 class="section-title">We'll put the<br>coffee on.</h2>
+        <h2 class="section-title">Have a coffee<br>with us.</h2>
         <p class="visit-body">Drop in, browse, and let us help you find exactly what your space is missing. No appointment needed &mdash; just good taste and good company.</p>
         <div class="visit-actions">
           <a href="https://maps.google.com/?q=350+Woodbridge+Ave+Unit+2+Woodbridge+ON+L4H+1M9" target="_blank" rel="noopener" class="btn-primary">

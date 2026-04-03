@@ -24,6 +24,7 @@ Single-page static website for "Something Different," a 40+ year family-owned It
 ## Assets Used
 | File | Usage |
 |------|-------|
+| icon.png | Favicon |
 | pink_flower.mp4 | Hero video background |
 | pink_flower-poster.jpg | Hero video poster frame |
 | shop_full.jpg | Story section |
@@ -51,4 +52,14 @@ Single-page static website for "Something Different," a 40+ year family-owned It
 - [x] css/style.css — full responsive styling (mobile-first, 768/1024/1280 breakpoints)
 - [x] js/main.js — scroll animations (IntersectionObserver), nav scroll state, mobile menu, video pause
 - [x] Initial build complete — opened in browser for review
+- [x] Favicon added (icon.png) to index.html
+- [x] Hero video repositioned to right half on desktop (1024px+): video-wrap covers right 50%, horizontal gradient blends into dark left background, hero content constrained to left 48%, vertical alignment changed to center
+- [x] Hero content vertically centered on desktop: replaced bottom-heavy padding (0 4rem 6rem / 0 6rem 7rem) with equal top/bottom padding (6rem 4rem / 7rem 6rem) at 1024px+ and 1280px+ breakpoints
+- [x] Hero flower video clipped by 40px at the bottom: `.hero-video-wrap` inset changed from `0` to `0 0 40px 0` so the media layer ends 40px above the hero bottom edge
 
+
+
+
+# To do:
+- Make the site feel less laggy especially when scrolling
+- make it so that when scrolling up and down past the top/bottom of the page the background has the same color as the top/bottom of the page
