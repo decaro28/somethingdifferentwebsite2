@@ -1203,6 +1203,81 @@ button {
   }
 }
 
+/* ==========================================================================
+   Mobile Hero — Two-Zone Layout (max-width: 767px)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+
+  /* Video occupies only the top ~56% of the viewport */
+  .hero-video-wrap {
+    bottom: 44%;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 8%,
+      rgba(0, 0, 0, 0.7) 16%,
+      #000 24%,
+      #000 72%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 8%,
+      rgba(0, 0, 0, 0.7) 16%,
+      #000 24%,
+      #000 72%,
+      transparent 100%
+    );
+  }
+
+  /* Video composition: center the bloom in the upper zone */
+  .hero-video {
+    object-position: center 20%;
+  }
+
+  /* Simplify overlay — just a soft bottom vignette within the image zone */
+  .hero-video-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(26, 22, 20, 0.18) 0%,
+      rgba(26, 22, 20, 0.04) 40%,
+      rgba(26, 22, 20, 0.52) 80%,
+      rgba(26, 22, 20, 0.88) 100%
+    );
+  }
+
+  .hero-video-overlay::before {
+    display: none;
+  }
+
+  /* Content sits in the clean dark zone below the image */
+  .hero-content {
+    padding-top: 1.5rem;
+  }
+
+  .hero-tag {
+    color: rgba(255, 253, 249, 0.65);
+  }
+
+  /* Sub-copy slightly tighter on narrow screens */
+  .hero-sub {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  /* Tag line — remove the local glow, dark bg is enough */
+  .hero-tag::before,
+  .hero-title::before,
+  .hero-sub::before,
+  .hero-cta::before {
+    display: none;
+  }
+
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

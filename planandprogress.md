@@ -72,7 +72,59 @@ Single-page static website for "Something Different," a 40+ year family-owned It
 
 
 
+---
+
+## Mobile Hero Redesign — Plan
+
+### Diagnosis: Why it looks bad on mobile
+
+**Screenshot observed (2026-04-03):** Hero shows the full-bleed pink flower video filling the entire viewport. The title "Something Different" and the sub-copy sit over the center of the flower bloom — the most visually busy part of the image — with only a moderate dark overlay keeping the text readable. Result: the composition feels cluttered, the text competes with the image, and the hero lacks a clear visual hierarchy.
+
+**Root cause breakdown:**
+
+1. **No spatial separation between image and text.** On desktop, the video is constrained to the right 50% (`left: 50%` on `.hero-video-wrap`), giving the left side a clean dark canvas for the title. On mobile that split doesn't exist — the video fills 100% of the viewport width and height, so text always overlays the image.
+
+2. **Content anchored to the bottom, image behind it.** `.hero { align-items: flex-end; padding: 0 2rem 4rem; }` pins all text to the lower viewport. The flower's `object-position: center 30%` places the bloom's brightest pink petals squarely in the mid-screen area where the title sits.
+
+3. **Overlay gradient not strong enough for mobile.** The `.hero-video-overlay` is tuned for desktop (text on dark left, image on right). On mobile, where text overlaps the full image, the gradient wash is too light to create a clean reading surface. The radial glow `::before` pseudo-elements behind each text element help locally but don't solve the composition problem.
+
+4. **The mask kills the top of the image, not the bottom.** `.hero-video-wrap` has a top mask that fades from transparent → opaque going down. This darkens the top edge (where nothing important is) but leaves the image at full vibrancy behind the text at the bottom-center.
+
+5. **Tag line and sub-copy are hard to read.** The `.hero-tag` ("Est. 1980s — Woodbridge, Ontario") is `0.75rem` with wide letter-spacing — tiny against a pink floral background. The `.hero-sub` runs to three lines on a narrow screen, making it verbose and hard to scan.
+
+---
+
+### Redesign Plan: Two-Zone Mobile Hero
+
+**Concept:** Split the mobile hero into two clear visual zones:
+- **Top zone (~55% of viewport height):** The flower video/image, displayed cleanly with no text overlay. The flower gets its own moment.
+- **Bottom zone (~45%):** A dark background (`var(--black)`) where all text content lives with full legibility.
+- A soft gradient transition stitches the two zones together, fading the flower's bottom edge into the dark text zone.
+
+This mirrors editorial/magazine layouts (common in high-end boutique sites) where a hero image and hero copy occupy distinct regions rather than overlapping.
+
+**Changes required — `css/style.css` only (mobile-first, max-width: 767px):**
+
+1. **`.hero-video-wrap`** — change `inset: 0` to `inset: 0 0 44% 0`, so the video wrapper only covers the top 56% of the viewport. Add a bottom mask (`mask-image: linear-gradient(to bottom, black 60%, transparent 100%)`) to softly dissolve the flower's bottom edge into the dark background below.
+
+2. **`.hero-video-overlay`** — replace or simplify the full-surface gradient. Only need a subtle vignette at the very bottom of the image zone (where it meets the text). Remove the heavy top/bottom washes that were compensating for the overlay issue.
+
+3. **`.hero { align-items: flex-end; padding: 0 2rem 4rem; }`** — keep `align-items: flex-end` so the content sits at the bottom. The padding is fine. The image zone above creates the visual space naturally.
+
+4. **`.hero-content`** — no structural change needed. It stays at the bottom of the flex container, now in the naturally dark zone below the image.
+
+5. **`.hero-tag`** — increase size slightly on mobile to `0.7rem` (or keep) but this will now read clearly on a dark background with no competition from the flower.
+
+6. **`.hero-sub`** — reduce to `0.9rem` on mobile and tighten `line-height` to `1.6` to make it more compact on narrow screens.
+
+7. **`.hero-video`** — adjust `object-position` to `center 20%` on mobile so the flower's bloom centers in the upper zone (not the mid-screen transition area).
+
+**Expected result:** The flower is framed like a photograph in the top portion of the screen — dramatic, uncluttered. Below it, the title, sub, and CTA sit in a clean dark field with sharp legibility. The gradient blends the two zones so it reads as one cohesive hero, not two boxes.
+
+---
+
 # To do:
+- [x] Mobile hero redesigned to two-zone layout: video constrained to top 56% of viewport via `bottom: 44%` on `.hero-video-wrap`, bottom mask dissolves flower into dark background, text lives in clean dark lower zone, overlay simplified, per-element radial glows removed (redundant on dark bg), video repositioned to `object-position: center 20%` so bloom sits in upper zone, sub-copy tightened to `0.9rem / 1.65` for narrow screens
 - [x] Make the site feel less laggy especially when scrolling
 - [x] make it so that when scrolling up and down past the top/bottom of the page the background has the same color as the top/bottom of the page
 - [x] Refined the mobile hero shadow treatment again so the darkness follows each element individually: removed the single shared glow behind `.hero-content` and attached blurred radial shadow fields to the tag, title, subcopy, and CTA instead, keeping the effect local to each piece of hero copy
@@ -87,3 +139,4 @@ Single-page static website for "Something Different," a 40+ year family-owned It
 - [x] Verified `something-different` can deploy successfully after the config change: triggered a production redeploy, confirmed status `Ready`, and confirmed `www.somethingdifferent.ca` returns HTTP 200 from Vercel
 - [x] Removed duplicate Vercel project `somethingdifferentwebsite2`, leaving `something-different` as the single Vercel auto-deploy target for GitHub repo `somethingdifferentwebsite2`
 - [x] Verified Git auto-deploy remains enabled on `something-different`: project link points to GitHub repo `decaro28/somethingdifferentwebsite2`, production branch is `main`, and Vercel reports `gitProviderOptions.createDeployments = enabled`
+- [x] Updated the mobile-only hero tag line `Est. 1980s — Woodbridge, Ontario` to use the same muted grey as the hero subtext by setting `.hero-tag { color: rgba(255, 253, 249, 0.65); }` inside the `@media (max-width: 767px)` block in `css/style.css`
