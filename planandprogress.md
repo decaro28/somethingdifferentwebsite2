@@ -55,11 +55,25 @@ Single-page static website for "Something Different," a 40+ year family-owned It
 - [x] Favicon added (icon.png) to index.html
 - [x] Hero video repositioned to right half on desktop (1024px+): video-wrap covers right 50%, horizontal gradient blends into dark left background, hero content constrained to left 48%, vertical alignment changed to center
 - [x] Hero content vertically centered on desktop: replaced bottom-heavy padding (0 4rem 6rem / 0 6rem 7rem) with equal top/bottom padding (6rem 4rem / 7rem 6rem) at 1024px+ and 1280px+ breakpoints
-- [x] Hero flower video clipped by 40px at the bottom: `.hero-video-wrap` inset changed from `0` to `0 0 40px 0` so the media layer ends 40px above the hero bottom edge
+- [x] Hero flower video cropped so the frame sits 40px lower: `.hero-video` remains `calc(100% + 40px)` tall and is offset downward by `top: 40px` inside the clipped wrapper, so the bottom 40px is cut while the visible flower composition shifts down
+- [x] Hero video playback sequence implemented on all views: starts hidden, seeks to 6s on `loadedmetadata`, fades in on `canplay`, then on `ended` fades out, waits 420ms, seeks to 1.5s, resumes playback, and fades back in
+- [x] Hero video entrance animation aligned to the text reveal: video now enters from `translateY(20px)` over `0.8s var(--ease-out)` and its first reveal is delayed by 300ms to match the hero text timing
+- [x] Hero video load-in motion now happens only once: after the first entrance animation completes, the video switches to an `is-settled` state so subsequent loop restarts use opacity-only fades instead of replaying the translate-up reveal
+- [x] Hero video top edge now truly fades into the background: added a top transparency mask on `.hero-video-wrap` so the upper portion of the video dissolves into the hero background instead of only darkening with an overlay
+- [x] Right-side scrollbar hidden while preserving scroll behavior: added cross-browser scrollbar hiding on the page root/body so vertical scrolling still works without showing the scrollbar track
+- [x] Scrolling performance pass: moved nav scroll updates onto `requestAnimationFrame`, prevented redundant `scrolled` class writes, reduced header blur cost, and added `content-visibility`/intrinsic sizing to below-the-fold sections so the browser can skip offscreen rendering during scroll
+- [x] Overscroll background aligned with page edges: switched the document body background to `var(--black)` so rubber-band scrolling past the top or bottom shows the same dark tone as the hero/footer instead of a light flash
+- [x] Hero flower brightness increased without affecting the background blur: applied `filter: brightness(1.16) saturate(1.08) contrast(1.03)` directly to `.hero-video`, which lifts the bloom and petal detail while leaving the overlay gradients, masks, and blurred text panel unchanged
+- [x] Hero brightness pass matched to the older `/somethingdifferentwebsite` approach: reduced the full-surface dark wash, moved the stronger shading into targeted left/bottom edge fades, and raised the video treatment to `brightness(1.32) saturate(1.14) contrast(1.06)` so the flowers read closer to the earlier, more luminous hero without changing blur behavior
+- [x] Removed the earlier direct video brightening attempts after review: kept the newer overlay rebalance inspired by `/somethingdifferentwebsite`, but dropped the `.hero-video` filter boost so the hero brightness comes from the edge-fade composition instead of an artificial global lift
+- [x] Removed the desktop hero scroll indicator after review: the thin vertical line at the lower-right of the hero was the `.hero-scroll-hint`, not a video seam, so the hint markup and its CSS were deleted to keep the hero media edge clean
 
 
 
 
 # To do:
-- Make the site feel less laggy especially when scrolling
-- make it so that when scrolling up and down past the top/bottom of the page the background has the same color as the top/bottom of the page
+- [x] Make the site feel less laggy especially when scrolling
+- [x] make it so that when scrolling up and down past the top/bottom of the page the background has the same color as the top/bottom of the page
+- [x] Refined the mobile hero shadow treatment again so the darkness follows each element individually: removed the single shared glow behind `.hero-content` and attached blurred radial shadow fields to the tag, title, subcopy, and CTA instead, keeping the effect local to each piece of hero copy
+- [x] Restored a brighter, more natural hero flower after review: brought back a restrained `.hero-video` filter (`brightness(1.14) saturate(1.04) contrast(1.02)`) and reduced the broad overlay wash so the bloom reads more luminous without looking artificially edited
+- [x] Copy exploration pass for replacing `"Step inside"`: generated short subheadline options aimed at a transportive, hushed, dreamlike sense of arrival without using explicit fantasy or religious wording
