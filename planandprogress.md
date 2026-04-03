@@ -124,7 +124,7 @@ This mirrors editorial/magazine layouts (common in high-end boutique sites) wher
 ---
 
 # To do:
-- [x] Mobile hero redesigned to two-zone layout: video constrained to top 56% of viewport via `bottom: 44%` on `.hero-video-wrap`, bottom mask dissolves flower into dark background, text lives in clean dark lower zone, overlay simplified, per-element radial glows removed (redundant on dark bg), video repositioned to `object-position: center 20%` so bloom sits in upper zone, sub-copy tightened to `0.9rem / 1.65` for narrow screens
+- [x] Mobile hero redesigned to two-zone layout; video entrance/loop transitions explicitly matched to desktop: `top: 0; height: 100%` (replaced the 40px offset designed for full-viewport), `.is-visible` and `.is-settled` classes re-declared in mobile block with identical timing (`opacity 0.8s` initial, `opacity 0.42s` on loop): video constrained to top 56% of viewport via `bottom: 44%` on `.hero-video-wrap`, bottom mask dissolves flower into dark background, text lives in clean dark lower zone, overlay simplified, per-element radial glows removed (redundant on dark bg), video repositioned to `object-position: center 20%` so bloom sits in upper zone, sub-copy tightened to `0.9rem / 1.65` for narrow screens
 - [x] Make the site feel less laggy especially when scrolling
 - [x] make it so that when scrolling up and down past the top/bottom of the page the background has the same color as the top/bottom of the page
 - [x] Refined the mobile hero shadow treatment again so the darkness follows each element individually: removed the single shared glow behind `.hero-content` and attached blurred radial shadow fields to the tag, title, subcopy, and CTA instead, keeping the effect local to each piece of hero copy
@@ -140,3 +140,13 @@ This mirrors editorial/magazine layouts (common in high-end boutique sites) wher
 - [x] Removed duplicate Vercel project `somethingdifferentwebsite2`, leaving `something-different` as the single Vercel auto-deploy target for GitHub repo `somethingdifferentwebsite2`
 - [x] Verified Git auto-deploy remains enabled on `something-different`: project link points to GitHub repo `decaro28/somethingdifferentwebsite2`, production branch is `main`, and Vercel reports `gitProviderOptions.createDeployments = enabled`
 - [x] Updated the mobile-only hero tag line `Est. 1980s — Woodbridge, Ontario` to use the same muted grey as the hero subtext by setting `.hero-tag { color: rgba(255, 253, 249, 0.65); }` inside the `@media (max-width: 767px)` block in `css/style.css`
+
+## SEO Implementation Log — 2026-04-03
+- [x] Reviewed `seoplan.md` and audited the current static site structure in `index.html`
+- [x] Confirmed the planned SEO assets and target files exist: `assets/shop_full.jpg`, `icon.png`, and the root static-site file layout
+- [x] Added head-level SEO metadata to `index.html` without changing visible page copy: robots, canonical, Open Graph, Twitter card, manifest link, and `HomeGoodStore` JSON-LD
+- [x] Created `robots.txt` at the project root
+- [x] Created `sitemap.xml` at the project root with `lastmod` set to `2026-04-03`
+- [x] Created `manifest.json` at the project root and linked it from `index.html`
+- [x] Added two non-visible SEO/PWA improvements while implementing the plan: `theme-color` metadata and richer social metadata (`og:image:alt`, `og:locale`)
+- [x] Ran a final verification pass on generated metadata and files

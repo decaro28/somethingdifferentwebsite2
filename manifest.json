@@ -1,0 +1,16 @@
+{
+  "name": "Something Different",
+  "short_name": "Something Diff.",
+  "description": "Handcrafted home decor boutique in Woodbridge, Ontario",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#1a1210",
+  "theme_color": "#1a1210",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}

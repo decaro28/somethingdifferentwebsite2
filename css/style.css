@@ -1214,35 +1214,44 @@ button {
     bottom: 44%;
     -webkit-mask-image: linear-gradient(
       to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.25) 8%,
-      rgba(0, 0, 0, 0.7) 16%,
-      #000 24%,
+      #000 0%,
       #000 72%,
       transparent 100%
     );
     mask-image: linear-gradient(
       to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.25) 8%,
-      rgba(0, 0, 0, 0.7) 16%,
-      #000 24%,
+      #000 0%,
       #000 72%,
       transparent 100%
     );
   }
 
-  /* Video composition: center the bloom in the upper zone */
+  /* Video: match desktop entrance/loop timing exactly */
   .hero-video {
     object-position: center 20%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
   }
 
-  /* Simplify overlay — just a soft bottom vignette within the image zone */
+  .hero-video.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-video.is-settled {
+    transform: translateY(0);
+    transition: opacity 0.42s var(--ease-out);
+  }
+
+  /* Overlay: dark top bleed fades quickly below the nav, then clean through the flower zone */
   .hero-video-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(26, 22, 20, 0.18) 0%,
-      rgba(26, 22, 20, 0.04) 40%,
+      rgba(26, 22, 20, 0.95) 0%,
+      rgba(26, 22, 20, 0.4) 14%,
+      rgba(26, 22, 20, 0.0) 22%,
+      rgba(26, 22, 20, 0.0) 70%,
       rgba(26, 22, 20, 0.52) 80%,
       rgba(26, 22, 20, 0.88) 100%
     );
