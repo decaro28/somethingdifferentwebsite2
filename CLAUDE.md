@@ -1,0 +1,1 @@
+record everything you are doing in planandprogress.md so that if edits are required we can keep everything as consistent as possible

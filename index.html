@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Something Different — Handcrafted Home Decor in Woodbridge</title>
+  <meta name="description" content="Family-owned boutique in Woodbridge, Ontario. Handcrafted home decor, flowers, arrangements, and seasonal gifts for over forty years.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Something Different</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#story">Our Story</a>
+        <a href="#shop">The Shop</a>
+        <a href="#seasons">Seasons</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a href="https://maps.google.com/?q=350+Woodbridge+Ave+Unit+2+Woodbridge+ON+L4H+1M9" target="_blank" rel="noopener" class="nav-cta">Visit Us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu-links">
+      <a href="#story">Our Story</a>
+      <a href="#shop">The Shop</a>
+      <a href="#seasons">Seasons</a>
+      <a href="#visit">Visit</a>
+      <a href="https://maps.google.com/?q=350+Woodbridge+Ave+Unit+2+Woodbridge+ON+L4H+1M9" target="_blank" rel="noopener" class="mobile-menu-cta">Visit Us</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-video-wrap">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="assets/pink_flower-poster.jpg"
+      >
+        <source src="assets/pink_flower.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">Est. 1980s &mdash; Woodbridge, Ontario</p>
+      <h1 class="hero-title">Something<br>Different</h1>
+      <p class="hero-sub">A family-owned boutique where every piece is chosen with care, and every visit feels like coming home.</p>
+      <a href="https://maps.google.com/?q=350+Woodbridge+Ave+Unit+2+Woodbridge+ON+L4H+1M9" target="_blank" rel="noopener" class="hero-cta">
+        <span>Visit Us</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 10h12M12 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story" id="story">
+    <div class="story-inner">
+      <div class="story-text reveal">
+        <p class="section-tag">Our Story</p>
+        <h2 class="section-title">Four decades of<br>making houses<br>feel like home.</h2>
+        <p class="story-body">
+          What started as a small family dream over forty years ago has grown into Woodbridge's most beloved home decor destination. We're Italian, we're loud, and we treat everyone who walks through our door like family &mdash; because to us, you are.
+        </p>
+        <p class="story-body">
+          Every arrangement is handcrafted. Every display is curated with the same care we'd put into our own home. Come in for a vase, stay for the coffee. That's just how we do things around here.
+        </p>
+      </div>
+      <div class="story-image reveal reveal-delay-1">
+        <img src="assets/shop_full.jpg" alt="Inside Something Different boutique — flowers, art, and handcrafted decor fill the sunlit shop" loading="lazy" width="800" height="1067">
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop Gallery Section -->
+  <section class="shop" id="shop">
+    <div class="shop-header reveal">
+      <p class="section-tag">The Shop</p>
+      <h2 class="section-title">Step inside.</h2>
+      <p class="shop-desc">Flowers, home accents, paintings, pots, and arrangements &mdash; everything you need to turn a room into something you never want to leave.</p>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-grid-item shop-grid-wide reveal">
+        <img src="assets/shop_wideflowers.jpg" alt="A display table filled with white, pink, and cherry blossom arrangements alongside rustic wood accents" loading="lazy" width="1200" height="900">
+      </div>
+      <div class="shop-grid-item shop-grid-tall reveal reveal-delay-1">
+        <img src="assets/shop_pink.jpg" alt="A pink-toned corner of the shop featuring a round mirror, roses, candles, and small potted plants" loading="lazy" width="800" height="1067">
+      </div>
+      <div class="shop-grid-item reveal reveal-delay-2">
+        <img src="assets/shop_blue.jpg" alt="A blue and white display with painted herons, hydrangeas, and patterned ceramic vases" loading="lazy" width="800" height="600">
+      </div>
+      <div class="shop-grid-item reveal">
+        <img src="assets/shop_lightblue.jpg" alt="Shelves with turquoise vases, vintage finds, and pampas grass in soft natural light" loading="lazy" width="800" height="1067">
+      </div>
+      <div class="shop-grid-item shop-grid-wide reveal reveal-delay-1">
+        <img src="assets/shop_woodpink.jpg" alt="A rustic wooden display with pale tulips, cherry blossoms, and zinc buckets" loading="lazy" width="1200" height="900">
+      </div>
+    </div>
+  </section>
+
+  <!-- Seasonal Section -->
+  <section class="seasons" id="seasons">
+    <div class="seasons-header reveal">
+      <p class="section-tag">Every Season</p>
+      <h2 class="section-title">There's always a<br>reason to celebrate.</h2>
+      <p class="seasons-desc">From Christmas trees dressed in gold to Valentine's bouquets wrapped in ribbon &mdash; we bring the magic of each season right to your doorstep.</p>
+    </div>
+    <div class="seasons-grid">
+      <div class="season-card reveal">
+        <div class="season-card-image">
+          <img src="assets/valentines.png" alt="A Valentine's Day arrangement with red and pink roses, heart picks, and gingham ribbon in a red enamel pot" loading="lazy" width="600" height="800">
+        </div>
+        <h3 class="season-card-title">Valentine's Day</h3>
+        <p class="season-card-text">Handcrafted arrangements that say what words can't. Roses, ribbon, and a whole lot of heart.</p>
+      </div>
+      <div class="season-card reveal reveal-delay-1">
+        <div class="season-card-image">
+          <img src="assets/mothersday.jpg" alt="A soft pink Mother's Day bouquet with gerbera daisies, roses, and baby's breath wrapped in white paper" loading="lazy" width="600" height="800">
+        </div>
+        <h3 class="season-card-title">Mother's Day</h3>
+        <p class="season-card-text">For the woman who made your house a home. Fresh bouquets, gifts, and all the little things she loves.</p>
+      </div>
+      <div class="season-card reveal reveal-delay-2">
+        <div class="season-card-image">
+          <img src="assets/christmas.png" alt="A lavishly decorated Christmas tree with gold poinsettias, red mesh ribbon, and twinkling lights" loading="lazy" width="600" height="900">
+        </div>
+        <h3 class="season-card-title">Christmas</h3>
+        <p class="season-card-text">Trees, wreaths, ornaments, and everything to make your home glow. We go all out &mdash; and so should you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit Section -->
+  <section class="visit" id="visit">
+    <div class="visit-inner">
+      <div class="visit-text reveal">
+        <p class="section-tag">Come Say Hello</p>
+        <h2 class="section-title">We'll put the<br>coffee on.</h2>
+        <p class="visit-body">Drop in, browse, and let us help you find exactly what your space is missing. No appointment needed &mdash; just good taste and good company.</p>
+        <div class="visit-actions">
+          <a href="https://maps.google.com/?q=350+Woodbridge+Ave+Unit+2+Woodbridge+ON+L4H+1M9" target="_blank" rel="noopener" class="btn-primary">
+            <span>Get Directions</span>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10h12M12 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="mailto:jondecaro@hotmail.com" class="btn-secondary">Send Us an Email</a>
+        </div>
+      </div>
+      <div class="visit-details reveal reveal-delay-1">
+        <div class="visit-detail-block">
+          <h3 class="visit-detail-label">Address</h3>
+          <p class="visit-detail-value">350 Woodbridge Ave, Unit 2<br>Woodbridge, ON L4H 1M9</p>
+        </div>
+        <div class="visit-detail-block">
+          <h3 class="visit-detail-label">Hours</h3>
+          <div class="visit-hours">
+            <div class="visit-hour-row">
+              <span>Monday &ndash; Friday</span>
+              <span>9:00 AM &ndash; 5:00 PM</span>
+            </div>
+            <div class="visit-hour-row">
+              <span>Saturday</span>
+              <span>9:00 AM &ndash; 3:00 PM</span>
+            </div>
+            <div class="visit-hour-row">
+              <span>Sunday</span>
+              <span>Closed</span>
+            </div>
+          </div>
+        </div>
+        <div class="visit-detail-block">
+          <h3 class="visit-detail-label">Email</h3>
+          <a href="mailto:jondecaro@hotmail.com" class="visit-email">jondecaro@hotmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Something Different</span>
+        <p class="footer-address">350 Woodbridge Ave, Unit 2 &mdash; Woodbridge, ON</p>
+      </div>
+      <div class="footer-links">
+        <a href="#story">Our Story</a>
+        <a href="#shop">The Shop</a>
+        <a href="#seasons">Seasons</a>
+        <a href="#visit">Visit</a>
+        <a href="mailto:jondecaro@hotmail.com">Email</a>
+      </div>
+      <p class="footer-copy">&copy; 2025 Something Different. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
